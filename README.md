@@ -1,4 +1,5 @@
-#Simple Counter App with BLoC State Management
+**#Simple Counter App with BLoC State Management**
+
 Welcome to the Simple Counter App! Here, I will provide you with a comprehensive explanation of BLoC state management and how it functions within this application.
 
 The primary purpose of this app is to serve as a Simple Counter, allowing you to effortlessly increment and decrement values. Through the utilization of BLoC (Business Logic Component) state management, we can effectively manage the state of our application, ensuring a smooth and reliable user experience.
@@ -10,3 +11,5 @@ Discover the power of BLoC state management and the convenience of hydratedStora
 
 Description = ChatGPT
 main tutor = AJ Flutter Tutorials 
+
+
