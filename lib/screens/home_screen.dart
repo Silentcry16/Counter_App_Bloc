@@ -7,13 +7,28 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var isSnackBarShown = true;
     return Scaffold(
       appBar: AppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            BlocBuilder<CounterBloc, CounterState>(
+            BlocConsumer<CounterBloc, CounterState>(
+              listener: (context, state) {
+                if (state.counterValue == 3) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('successfully incremented'),
+                    duration: Duration(milliseconds: 300),
+                  ));
+                } else if (state.counterValue < 0 && isSnackBarShown) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('negative numbers has initialized'),
+                    duration: Duration(milliseconds: 300),
+                  ));
+                  isSnackBarShown = false;
+                }
+              },
               builder: (context, state) {
                 return Text('Current Value: ${state.counterValue} ');
               },
@@ -26,7 +41,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () =>
-                      context.read<CounterBloc>().add(DecreaseEvent()),
+                      context.read<CounterBloc>().add(DecrementEvent()),
                   child: const Text('Decrease -'),
                 ),
                 const SizedBox(
@@ -34,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () =>
-                      context.read<CounterBloc>().add(IncreaseEvent()),
+                      context.read<CounterBloc>().add(IncrementEvent()),
                   child: const Text('Increase +'),
                 ),
               ],
