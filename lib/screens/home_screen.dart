@@ -14,6 +14,20 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            //////////////////////BlocConsumer//////////////////////////
+
+            //The BlocConsumer widget is responsible for two main tasks:
+            //1- Listening to the state changes and 2- Reacting to state changes
+
+            //////builder: The builder callback is responsible for building the UI based on
+            ///// the current state emitted by the BLoC. It receives the BuildContext and the
+            /////state as input parameters and returns the widget tree to be rendered.
+            ///
+            ///listener: The listener callback is executed whenever a new state is emitted by the BLoC.
+            /// It allows you to perform side effects or trigger actions based on the state changes.
+            ///  For example, you can show a SnackBar, navigate to a different screen, or perform any other
+            /// logic based on the new state.
+
             BlocConsumer<CounterBloc, CounterState>(
               listener: (context, state) {
                 if (state.counterValue == 3) {
@@ -40,6 +54,10 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
+                  //The line of code, context.read<CounterBloc>().add(DecrementEvent())  is responsible for
+                  //triggering the CounterBloc to handle a DecrementEvent. This event will initiate the
+                  //necessary logic in the CounterBloc to decrement the counter value and emit a new state.
+                  //The UI will then be updated based on the new state emitted by the CounterBloc.
                   onPressed: () =>
                       context.read<CounterBloc>().add(DecrementEvent()),
                   child: const Text('Decrease -'),
