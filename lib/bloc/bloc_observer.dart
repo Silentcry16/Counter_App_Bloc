@@ -5,7 +5,7 @@ class CounterBlocObserver extends BlocObserver {
   void onEvent(Bloc bloc, Object? event) {
     super.onEvent(bloc, event);
     print(onEvent);
-  }
+  }   
 
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
