@@ -10,6 +10,7 @@ Discover the power of BLoC state management and the convenience of hydratedStora
 
 
 Description = ChatGPT
+
 main tutor = AJ Flutter Tutorials 
 
 
